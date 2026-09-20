@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Logo ninja com coroa, fumaça e partículas</title>
+  <desc id="desc">Mascote ninja em preto e dourado com patch do Brasil, olhos brilhantes, fumaça cinza animada e partículas amarelas subindo.</desc>
+
+  <style>
+    :root {
+      --gold: #ffc21a;
+      --gold-soft: #ffe08a;
+      --smoke: #b8b8b8;
+      --smoke-dark: #6f6f6f;
+    }
+
+    svg {
+      overflow: visible;
+      shape-rendering: geometricPrecision;
+      text-rendering: optimizeLegibility;
+    }
+
+    .smoke {
+      fill: none;
+      stroke: var(--smoke);
+      stroke-width: 18;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: .52;
+      filter: url(#softSmoke);
+      transform-box: fill-box;
+      transform-origin: center;
+      will-change: transform, opacity;
+      animation: smokeDrift 5.8s ease-in-out infinite;
+    }
+
+    .smoke--left  { animation-delay: -1.2s; }
+    .smoke--right { animation-delay: -2.7s; }
+
+    .eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      will-change: opacity, filter;
+      animation: eyePulse 2.4s ease-in-out infinite;
+    }
+
+    .eye--right { animation-delay: -1.1s; }
+
+    .particle {
+      fill: var(--gold);
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      will-change: transform, opacity;
+      animation: particleRise var(--dur, 7s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .particle--soft { fill: var(--gold-soft); }
+
+    @keyframes smokeDrift {
+      0%, 100% {
+        opacity: .28;
+        transform: translateY(10px) scale(.985);
+      }
+      45% {
+        opacity: .72;
+        transform: translateY(-14px) scale(1.015);
+      }
+      70% {
+        opacity: .48;
+        transform: translateY(-4px) scale(1);
+      }
+    }
+
+    @keyframes eyePulse {
+      0%, 100% {
+        opacity: .72;
+        filter: drop-shadow(0 0 6px rgba(255, 194, 26, .45));
+      }
+      50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 22px rgba(255, 194, 26, .95))
+                drop-shadow(0 0 42px rgba(255, 224, 138, .45));
+      }
+    }
+
+    @keyframes particleRise {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(.65);
+      }
+      18% {
+        opacity: .95;
+      }
+      72% {
+        opacity: .55;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(1.15);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .smoke, .eye, .particle {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <defs>
+    <radialGradient id="headGrad" cx="50%" cy="38%" r="68%">
+      <stop offset="0" stop-color="#3a3a3a"/>
+      <stop offset=".42" stop-color="#141414"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff3a6"/>
+      <stop offset=".35" stop-color="#ffc21a"/>
+      <stop offset="1" stop-color="#9c6200"/>
+    </linearGradient>
+
+    <linearGradient id="patchGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b3b3b"/>
+      <stop offset="1" stop-color="#101010"/>
+    </linearGradient>
+
+    <filter id="softSmoke" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+
+    <filter id="logoShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+
+    <clipPath id="visorClip">
+      <rect x="604" y="350" width="318" height="178" rx="26"/>
+    </clipPath>
+  </defs>
+
+  <!-- silhueta principal -->
+  <g id="logo" filter="url(#logoShadow)">
+    <path
+      id="head"
+      d="M536 392c30-93 127-151 240-151 116 0 213 61 239 156 17 62 7 143-29 211-33 62-91 105-151 124-72 22-157 7-214-42-62-53-101-135-85-298Z"
+      fill="url(#headGrad)"/>
+
+    <path
+      id="goldRim"
+      d="M545 393c27-86 120-139 231-139 111 0 204 55 230 141"
+      fill="none"
+      stroke="#3a2a00"
+      stroke-width="13"
+      stroke-linecap="round"
+      opacity=".85"/>
+
+    <!-- coroa -->
+    <g id="crown" transform="translate(900 188) rotate(13)">
+      <path
+        d="M0 120 24 28l48 54 42-86 43 88 50-55 23 91c-64 32-165 31-230 0Z"
+        fill="url(#goldGrad)"
+        stroke="#2b1c00"
+        stroke-width="10"
+        stroke-linejoin="round"/>
+      <circle cx="24" cy="28" r="15" fill="#0b0b0b" stroke="#ffc21a" stroke-width="8"/>
+      <circle cx="114" cy="-4" r="15" fill="#0b0b0b" stroke="#ffc21a" stroke-width="8"/>
+      <circle cx="207" cy="29" r="15" fill="#0b0b0b" stroke="#ffc21a" stroke-width="8"/>
+    </g>
+
+    <!-- viseira/patch Brasil -->
+    <g id="visor">
+      <rect x="604" y="350" width="318" height="178" rx="26" fill="#080808" stroke="#000" stroke-width="16"/>
+      <rect x="628" y="374" width="270" height="130" rx="15" fill="url(#patchGrad)" stroke="#303030" stroke-width="6"/>
+      <g clip-path="url(#visorClip)">
+        <path d="M650 439 763 391l113 48-113 48Z" fill="#ffdf20"/>
+        <circle cx="763" cy="439" r="42" fill="#002776"/>
+        <path d="M724 431c28 14 52 15 79 2" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="745" cy="420" r="3" fill="#fff"/>
+        <circle cx="782" cy="451" r="3" fill="#fff"/>
+      </g>
+      <circle cx="628" cy="374" r="7" fill="#050505"/>
+      <circle cx="898" cy="374" r="7" fill="#050505"/>
+      <circle cx="628" cy="504" r="7" fill="#050505"/>
+      <circle cx="898" cy="504" r="7" fill="#050505"/>
+    </g>
+
+    <!-- máscara/boca -->
+    <path id="mask" d="M646 592c83-58 198-60 276-4-38 73-218 78-276 4Z" fill="#030303" opacity=".96"/>
+
+    <!-- olhos: classe .eye recebe o glow -->
+    <g id="eyes">
+      <path class="eye eye--left"  d="M668 556c34-30 77-31 108-2-24 31-82 31-108 2Z" fill="#ffd21f"/>
+      <path class="eye eye--right" d="M833 553c32-29 77-28 107 3-29 29-84 28-107-3Z" fill="#ffd21f"/>
+      <circle cx="724" cy="550" r="12" fill="#171100"/>
+      <circle cx="891" cy="548" r="12" fill="#171100"/>
+      <circle class="eye eye--left"  cx="713" cy="541" r="5" fill="#fff7c2"/>
+      <circle class="eye eye--right" cx="880" cy="539" r="5" fill="#fff7c2"/>
+    </g>
+
+    <!-- fumaça: paths com classes .smoke -->
+    <g id="smoke" aria-label="fumaça animada">
+      <path class="smoke smoke--left"
+        d="M503 541c-43-14-55-48-27-74 22-20 55-16 68-44 11-25-11-45-38-41"/>
+      <path class="smoke smoke--left"
+        d="M565 624c-49 11-89-9-93-48-3-31 25-50 19-82-5-28-35-38-62-25" opacity=".38"/>
+      <path class="smoke smoke--right"
+        d="M1047 532c44-20 50-58 20-80-25-18-58-10-75-38-13-23 5-47 34-47"/>
+      <path class="smoke smoke--right"
+        d="M984 616c50 8 88-15 89-54 1-31-29-48-25-81 3-29 32-42 60-31" opacity=".36"/>
+    </g>
+
+    <!-- partículas animadas -->
+    <g id="particles" aria-label="partículas flutuantes">
+      <circle class="particle"            cx="525" cy="470" r="7"  style="--dur:6.8s; --delay:-.8s"/>
+      <circle class="particle particle--soft" cx="556" cy="650" r="5" style="--dur:8.2s; --delay:-2.4s"/>
+      <circle class="particle"            cx="1008" cy="440" r="6" style="--dur:7.4s; --delay:-1.6s"/>
+      <circle class="particle particle--soft" cx="982" cy="646" r="8" style="--dur:9s; --delay:-3.1s"/>
+      <circle class="particle"            cx="814" cy="785" r="6" style="--dur:7.9s; --delay:-4.2s"/>
+      <circle class="particle particle--soft" cx="1058" cy="560" r="5" style="--dur:6.4s; --delay:-2s"/>
+      <circle class="particle"            cx="484" cy="590" r="5" style="--dur:8.8s; --delay:-5s"/>
+    </g>
+
+    <!-- respingos dourados -->
+    <g id="drips" fill="#b97b00" opacity=".9">
+      <path d="M1000 337c8 18 7 34-3 45-11-10-12-29 3-45Z"/>
+      <path d="M1074 318c6 20 3 35-9 43-8-13-6-31 9-43Z"/>
+      <path d="M829 777c6 17 3 31-8 39-8-12-5-29 8-39Z"/>
+    </g>
+  </g>
+</svg>
