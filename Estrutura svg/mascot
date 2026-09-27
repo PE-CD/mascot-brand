@@ -1,0 +1,26 @@
+mascot/
+├── README.md
+├── LICENSE
+│
+├── src/
+│   └── mascot.svg
+│
+├── assets/
+│   ├── static/
+│   │   ├── mascot.svg
+│   │   ├── mascot.png
+│   │   └── mascot-dark.svg
+│   │
+│   └── references/
+│       └── concept.png
+│
+├── docs/
+│   ├── architecture.md
+│   ├── animations.md
+│   └── changelog.md
+│
+├── tests/
+│   └── render-check.md
+│
+└── backups/
+    └── mascot-backup.svg
